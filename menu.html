@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shopping Menu</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300&family=Poppins:wght@700&family=Raleway:wght@200&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel = "icon" href = "https://i.imgur.com/ycMAR4r.png" type = "image/x-icon">
+        <style>
+            body {
+                background-image: url(https://i.imgur.com/EldyBon.png);
+                animation: fadeInAnimation ease 3s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                font-family: 'Khula', sans-serif;
+            }
+            @keyframes fadeInAnimation {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .footer{
+                text-align: center;
+                height: auto;
+                background-color: rgb(253, 225, 215);
+                width: 100%;
+            }
+            .card {
+                box-shadow: 0px 1px 5px #555;
+                background-color: white;
+                min-height: 380px;
+                min-width: 330px;
+                max-height: 450px;
+                max-width: 430px;
+            }
+            .card-title {
+                font-size: 2rem;
+            }
+            .card-description {
+                padding: .5rem;
+                line-height: 1.6em;
+            }
+            .card-container::before {
+                display: none;
+            }
+            .card-container {
+                display: grid;
+                padding: 1rem;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                grid-gap: 1rem;
+            }   
+            img{
+                margin-bottom: 1px;
+                width: 100%;
+            }
+            .btn {
+                width: 70px;
+                margin: 10px;
+                background-color: #7c8d6d;
+                outline: 3px solid #7c8d6d;
+                color: white;
+            }
+            .btn:hover {
+                color: white;
+                background-color: transparent;
+                outline: 3px solid #7c8d6d;
+            }
+            .list-group-item{
+                background-color: transparent;
+                padding-left: 10px;
+                border-color: transparent;
+                padding-bottom: 0px;
+            }
+            .rawr {
+                color: rgb(33, 62, 21);
+                border: 1px solid white;
+                padding: 20px 80px;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                margin-bottom: 30px;
+                margin-top: 5px;
+                background-color:#e4c99d;
+                max-width: 100%;
+                max-height: 100%;
+            }
+            .rawr span {
+                font-family: 'Raleway', sans-serif;
+                position: relative;
+                z-index: 100;
+                max-width: 100%;
+                max-height: 100%;
+            }
+            .rawr:before, .rawr:after {
+                content: '';
+                position: absolute;
+                display: block;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+            .rawr:before {
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+                background-color: #d16542;
+                border: 1px solid #d16542;
+                -webkit-transition: -webkit-transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                transition: -webkit-transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                transition: transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                transition: transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19), -webkit-transform 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            .rawr:after {
+                background-color: #fceb8b;
+                border: 1px solid #fceb8b;
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0);
+                -webkit-transition: -webkit-transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+                transition: -webkit-transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+                transition: transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+                transition: transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62), -webkit-transform 300ms 300ms cubic-bezier(0.16, 0.73, 0.58, 0.62);
+            }
+            .rawr:hover:before {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            .rawr:hover:after {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            a:hover {
+                text-decoration: none;
+            }
+            h3 {
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+                letter-spacing: 2px;
+            }
+            #myBtn {
+                display: none;
+                position: fixed;
+                bottom: 20px;
+                right: 30px;
+                z-index: 99;
+                font-size: 13px;
+                border: none;
+                outline: none;
+                background-color: white;
+                color: #45462b;
+                cursor: pointer;
+                padding: 9px;
+                border-radius: 30px;
+                transition-duration: .5s;
+            }
+            #myBtn:hover {
+                background-color: transparent;
+                color: white;
+            }
+            .boomnk {
+                position: relative;
+            }
+            .image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            .overlay {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                width: 100%;
+                opacity: 0;
+                transition: .5s ease;
+                background-color: black;
+                align-items: center;
+            }
+            .boomnk:hover .overlay {
+                opacity: .5;
+            }    
+            .text {
+                color: white;
+                font-size: 20px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+            .card-subtitle {
+                width: 100%;
+                height: 100%;
+                color: white;
+                padding-top: 35%;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 15%;
+            }
+            input[type=text] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border: 2px solid rgb(42, 41, 41);
+                border-width:0px 0px 2px 0px;
+                background-color: transparent;
+            }
+            input[type=text]:focus {
+                outline:none;
+                border-image: linear-gradient(to right, #DEAFDB 0%, #EFB9AD 100%) 1;
+                border-width:0px 0px 2px 0px;
+            }
+            .btn-remove {
+                outline: transparent;
+                background-color: transparent;
+                margin-top: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+            }
+            .btn-remove:hover {
+                outline: transparent;
+                color:#DEAFDB;
+            }
+            </style>
+            <script>
+
+            var myCart = [];
+            var menu = [
+            {prod_name : "Fluffy Alien Hat", prod_price: 150},
+            {prod_name : "Melody And Cinnamoroll Matching Set", prod_price: 499},
+            {prod_name : "Fairy Bow", prod_price: 250},
+            {prod_name : "Cream Sunglasses", prod_price: 180},
+            {prod_name : "Sweetheart Scarf", prod_price: 175},
+            {prod_name : "Creme Beret", prod_price: 465},
+            {prod_name : "Cactus Cat Bed", prod_price: 770},
+            {prod_name : "Cactus Water Fountain", prod_price: 250},
+            {prod_name : "Grooming Brush", prod_price: 200},
+            {prod_name : "Flower Scratching Post", prod_price: 475},
+            {prod_name : "Grooming Tools Set", prod_price: 389},
+            {prod_name : "Green Litter Box", prod_price: 480},
+            {prod_name : "Tuna Fish Biscuits", prod_price: 175},
+            {prod_name : "Kitty Cookies", prod_price: 175},
+            {prod_name : "Marie Kitty Special", prod_price: 265},
+            {prod_name : "Cat Treats Jar w Handle", prod_price: 150},
+            {prod_name : "Cat Treat Jar w Cap", prod_price: 150},
+            {prod_name : "Honey Bear Jar", prod_price: 150},
+            {prod_name : "Heart Mugs", prod_price: 380},
+            {prod_name : "Catfish", prod_price: 198},
+            {prod_name : "Cat. Just Cat.", prod_price: 250},
+            {prod_name : "Soap Holder", prod_price: 110},
+            {prod_name : "Trinket Holder", prod_price: 285},
+            {prod_name : "Cat Jewelry Holder", prod_price: 285},
+        ];
+        function showCart() {
+            if(myCart.length == 0) {
+                document.getElementById("ulcart").innerHTML = '<li><em>No items.</em></li>';
+            } else {
+                var totprice = 0;
+                document.getElementById("ulcart").innerHTML = "";
+                for(var i=0; i<myCart.length; i++) {
+                    totprice += myCart[i].prod_price
+                    document.getElementById("ulcart").innerHTML += '<li class="list-group-item">'+ myCart[i].prod_name + '<button class="btn btn-remove" onclick="remove(' + i +')"><span class="material-symbols-outlined" style="font-size: 15px;">close</span></button></li>'
+                }
+                document.getElementById("totpricetxt").innerHTML = totprice;
+                document.getElementById("customerorder").value = JSON.stringify(myCart);
+            }
+        }
+        function addItem(event) {
+            var item = Number(event.target.id.slice(1,2))-1;
+            myCart.push(menu[item]);
+            showCart();
+        }
+        function addItem2(event) {
+            var item = Number(event.target.id.slice(1,3))-1;
+            myCart.push(menu[item]);
+            showCart();
+        }
+        function remove(i) {
+            myCart.splice(i,1);
+            showCart();
+        }
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top: 10px; max-height: 800px; margin-bottom: 10px;">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner" style="max-height: 800px;">
+                    <div class="item active">
+                        <img src="https://i.imgur.com/W7hM4GT.png" alt="1" style="width:100%; align-items: center;">
+                        <div class="carousel-caption" style="padding-bottom: 15%;">
+                            <a href="#fashion">
+                                <div class="rawr">
+                                    <span>Fashion</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="https://i.imgur.com/v2Z2bP5.png" alt="2" style="width:100%;">
+                        <div class="carousel-caption" style="padding-bottom: 15%;">
+                            <a href="#grooming">
+                                <div class="rawr">
+                                    <span>Grooming</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="https://i.imgur.com/LdNlTdF.png" alt="3" style="width:100%;">
+                        <div class="carousel-caption" style="padding-bottom: 15%;">
+                            <a href="#cattreats">
+                                <div class="rawr">
+                                    <span>Cat treats</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="https://i.imgur.com/ZO4ntWZ.png" alt="4" style="width:100%;">
+                        <div class="carousel-caption" style="padding-bottom: 15%;">
+                            <a href="#forowners">
+                                <div class="rawr">
+                                    <span>For Owners</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            kdjahf
+        </div>
+
+        <div class="container mt-5" style="margin-bottom: 30px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 id="fashion">FASHION</h3>
+                    <br>
+                    <div class="row mb-3 card-container">  
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/fMJwMd5.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Fluffy Alien Hat</h4>
+                                    Made with love for the one true love that will never break our hearts 
+                                    <br>
+                                    <br>
+                                    P 150.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item1" id="i1">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/JjWstFj.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Melody and Cinnamoroll Matching Set</h4>
+                                    For your cats and their polar opposites 
+                                    <br>
+                                    <br>
+                                    P 499.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item2" id="i2">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/bHGA3KJ.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Fairy Bow</h4>
+                                    Let her live the princess life she deserves! 
+                                    <br>
+                                    <br>
+                                    P 250.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item3" id="i3">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/hQl4dYW.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Cream Sunglasses</h4>
+                                    Cool AND Classy???? YEASSS!!
+                                    <br>
+                                    <br>
+                                    P 180.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item4" id="i4">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/96QubTQ.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Sweetheart Scarf</h4>
+                                    Old money. Rich. Unbothered. Pretty. Living the Best Life
+                                    <br>
+                                    <br>
+                                    P 175.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item5" id="i5">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/DDYIHQB.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Creme Beret</h4>
+                                    Cher from Clueless who?????
+                                    <br>
+                                    <br>
+                                    P 465.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item6" id="i6">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h3 id="grooming">NECESSITIES<br>+<br>GROOMING</h3>
+                    <div class="row card-container">
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/cuUceES.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Cactus Cat Bed</h4>
+                                    Babes don't threaten me with a good time!!
+                                    <br>
+                                    <br>
+                                    P 770.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item7" id="i7">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/R51W7pk.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Cactus Water Fountain</h4>
+                                    Stray hydrated with the only plant that hydrate in heat
+                                    <br>
+                                    <br>
+                                    P 250.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item8" id="i8">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/yjTHBZE.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Grooming Brush</h4>
+                                    massage = happy kitten, easy storage = happy owner
+                                    <br>
+                                    <br>
+                                    P 200.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem(event)" value="item9" id="i9">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/MZ4SeWt.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Flower Scratching Post</h4>
+                                    Now they can be Thumbelina!!!!!!!!!!!!!!!!
+                                    <br>
+                                    <br>
+                                    P 475.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item10" id="i10">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/15SxjN2.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Grooming Tools Set</h4>
+                                    Very Clingy Please Do Not Separate
+                                    <br>
+                                    <br>
+                                    P 465.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item11" id="i11">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/HUdQuQi.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Green Litter Box</h4>
+                                    A clean place for your cat's litter (that is not your floor.)
+                                    <br>
+                                    <br>
+                                    P 465.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item12" id="i12">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h3 id="cattreats">CAT<br>TREATS</h3>
+                    <div class="row card-container">
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/ZtEod57.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Tuna Fish Biscuits</h4>
+                                    Personal Favorite (not that I have tasted it or anything)
+                                    <br>
+                                    <br>
+                                    P 175.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item13" id="i13">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/J0iwwOX.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Kitty Cookies</h4>
+                                    Blueberries, Strawberries, and Honeydew to make your cat as sweet as can be
+                                    <br>
+                                    <br>
+                                    P 175.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item14" id="i14">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/QPV04Zj.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Marie Kitty Special</h4>
+                                    Madame Adelaide's v v v v v v v v Special Formuler
+                                    <br>
+                                    <br>
+                                    P 265.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item15" id="i15">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/i8kSLZO.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Cat Treats Jar w Handle</h4>
+                                    easy and portable, for traveling!
+                                    <br>
+                                    <br>
+                                    P 150.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item16" id="i16">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/WBptHiD.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Cat Treats Jar w Cap</h4>
+                                    Not to be confused with your bowls of biscuits
+                                    <br>
+                                    <br>
+                                    P 150.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item17" id="i17">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/0zbi2Pi.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Honey Bear Jar</h4>
+                                    Winnie the Pooh loves cats too
+                                    <br>
+                                    <br>
+                                    P 380.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item18" id="i18">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <h3 id="forowners">FOR<br>OWNERS</h3>
+                    <div class="row card-container">
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/RUitaNW.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Heart mugs</h4>
+                                    3 for replacement for when your cat breaks it :D
+                                    <br>
+                                    <br>
+                                    P 380.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item19" id="i19">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/CawqncY.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Catfish</h4>
+                                    this is NOT catfish the fish nor is it catfish the scam
+                                    <br>
+                                    <br>
+                                    P 198.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item20" id="i20">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/roHTnAH.jpg); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Cat. Just Cat.</h4>
+                                    because what is breakfast without company?
+                                    <br>
+                                    <br>
+                                    P 250.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item21" id="i21">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/3SMEsW9.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Soap Holder</h4>
+                                    Flowers to keep soap from slipping
+                                    <br>
+                                    <br>
+                                    P 110.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item22" id="i22">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/gerFJcp.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Trinket Holder</h4>
+                                    spare some change for mushrooms?
+                                    <br>
+                                    <br>
+                                    P 285.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item23" id="i23">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card boomnk" style="background-image: url(https://i.imgur.com/EhpGC1G.png); background-size: cover;">
+                            <div class="overlay">
+                                <div class="card-subtitle">
+                                    <h4>Cat Jewlery Holder</h4>
+                                    what better image of elegance and richness than a cat?
+                                    <br>
+                                    <br>
+                                    P 285.00
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn" onclick="addItem2(event)" value="item24" id="i24">
+                                        add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    
+                </div>
+                <div class="col-sm-3">
+                    <h3>your cart</h3> 
+                    <br>
+                    <ul id="ulcart">
+                        <li><em>No items.</em></li>
+                    </ul>  
+                    <br>
+                    <br>
+                    <p>
+                        <span class="d-inline-block">Total: P</span>
+                        <span class="d-inline-block" id="totpricetxt">0</span>
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <h3>deli details</h3>
+                    <form id="myform" action="http://sirjm.infinityfreeapp.com/checkout.php" method="get">
+                        <b><label for="name">name:</label></b><br>
+                        <input class="mb-3" type="text" id="name" name="cust_name" placeholder="Marie Kitty">
+                        <b><label for="addr">address:</label></b><br>
+                        <input class="mb-3" type="text" id="addr" name="cust_addr" placeholder="24 Primrose St.">
+                        <b><label for="email">email:</label></b><br>
+                        <input class="mb-3" type="text" id="email" name="cust_email" placeholder="marie@aristocats.com">
+                        <input type="hidden" name="cust_order" id="customerorder">
+                        <input type="submit" class="btn" value="confirm">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="material-symbols-outlined" style="font-size: 12px;">expand_less</span> to top</button>
+        <div class="footer">
+            <div class="container">
+                <footer class="py-3 my-4">
+                  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+                    <li class="nav-item"><a href="abtauthors.html" class="nav-link px-2 text-muted">About</a></li>
+                  </ul>
+                  <p class="text-center text-muted">&copy; 2023 Llemos, Mancao, Peralta</p>
+                </footer>
+              </div>
+        </div>
+        <script>
+        let mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+    
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+    
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        </script>
+    </body>
+</html>
